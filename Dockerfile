@@ -4,7 +4,6 @@ FROM lsucrc/crcbase
 USER root
 WORKDIR /root
 RUN mkdir /var/run/sshd
-RUN echo 'root:screencast' | chpasswd
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
