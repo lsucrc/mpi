@@ -1,0 +1,10 @@
+head:
+  image: mpi
+  ports:
+   - "22"
+  links:
+   - node
+
+node:
+  image: mpi
+
