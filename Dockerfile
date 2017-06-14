@@ -6,6 +6,9 @@ WORKDIR /root
 RUN mkdir /var/run/sshd
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
+# Unlock non-password USER to enable SSH login
+RUN passwd -u root
+
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
 
 # SSH login fix. Otherwise user is kicked off after login
