@@ -32,6 +32,9 @@ RUN chmod -R 600 /root/.ssh/*
 ENV PATH=$PATH:/usr/lib64/openmpi/bin \
     LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64/openmpi/lib \
     LD_PRELOAD=/usr/lib64/openmpi/lib/libmpi.so
+    
+# make sure ORTE is able to reliably start one or more daemons
+RUN ln -s  /usr/lib64/openmpi/bin/orted /usr/bin
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
